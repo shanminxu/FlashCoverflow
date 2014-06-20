@@ -1,0 +1,43 @@
+// Coverflow v1.0 by Heavenbrook, all rights reserved.
+// Flash CS4 and above, pure AS3
+
+//Instructions: 
+//copy cs4 and as3 to your folder,
+//in your fla file, add this action script:
+
+import cs4.effect.*;
+import as3.tool.*;
+import flash.events.MouseEvent;
+import flash.media.Video;
+
+var imageTitle:Array = new Array();
+
+var coverflow:Coverflow = new Coverflow(320, 240); //size of coverflow
+for (var i:int=1; i<27; i++) {
+	coverflow.addImage("images/"+i+".jpg"); //add all images
+	imageTitle[i-1] = "Image " + i; // set image titles
+}
+
+coverflow.x = 0;
+coverflow.y = 20; //position of coverflow
+coverflow.showFrame = true; //show frame around image
+coverflow.showReflection = true; // show reflection under image
+coverflow.addEventListener("curImageChanged", curImageChanged);
+coverflow.addEventListener("imageClick", imageClick);
+coverflow.refresh(); //show coverflow
+addChildAt(coverflow, 0);
+
+function curImageChanged(e:PubEvent):void {
+	title.text = imageTitle[e.info.curImage];
+}
+
+function imageClick(e:PubEvent):void {
+	title.text = imageTitle[e.info.curImage] + " clicked."
+}
+
+//optional scroll buttons:
+btnLeft.addEventListener(MouseEvent.CLICK, btnLeftClick);
+btnRight.addEventListener(MouseEvent.CLICK, btnRightClick);
+function btnLeftClick(e:MouseEvent):void { coverflow.moveLeft(); }
+function btnRightClick(e:MouseEvent):void { coverflow.moveRight(); }
+

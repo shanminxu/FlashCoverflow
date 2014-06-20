@@ -1,0 +1,15 @@
+This is pure AS3 version of coverflow.
+
+
+1. using flash 3d transition.
+
+2. can add unlimited images.
+
+3. option of showing frame on image.
+
+4. option of showing reflection under image.
+
+5. event listener for image scroll and click.
+
+6. method function to scroll left and right.
+
